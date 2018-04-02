@@ -25,3 +25,6 @@
 * 수신한 메시지를 처리할 handler 메소드를 지정한다.
 * RabbitMQ 큐를 감시할 Listener를 만들어 메시지가 들어오면 handler 메소드에 전달한다.
 * Listener는 내부적으로 메시지를 적절한 타입으로 변환한다.(MessageConverter Interface를 구현한 적절한 메시지 변환기로)
+
+
+<code>http://projects.spring.io/spring-amqp</code>
