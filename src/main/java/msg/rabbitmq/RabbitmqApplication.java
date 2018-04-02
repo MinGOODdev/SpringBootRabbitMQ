@@ -2,12 +2,18 @@ package msg.rabbitmq;
 
 import msg.rabbitmq.component.Producer;
 import org.springframework.amqp.core.Queue;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 
+import java.util.Date;
+
+@EnableScheduling
 @SpringBootApplication
 public class RabbitmqApplication {
 
@@ -17,6 +23,8 @@ public class RabbitmqApplication {
 
     @Value("${myqueue}")
     String queue;
+    @Autowired
+    Producer producer;
 
     @Bean
     Queue queue() {
@@ -28,5 +36,10 @@ public class RabbitmqApplication {
         return args -> {
             producer.sendTo(queue, "Hello, World!");
         };
+    }
+
+    @Scheduled(fixedDelay = 500L)
+    public void sendMsg() {
+        producer.sendTo(queue, "지금 시각은 " + new Date());
     }
 }
