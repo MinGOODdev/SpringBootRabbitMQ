@@ -43,5 +43,10 @@
 * RabbitMQ 큐를 감시할 Listener를 만들어 메시지가 들어오면 handler 메소드에 전달한다.
 * Listener는 내부적으로 메시지를 적절한 타입으로 변환한다.(MessageConverter Interface를 구현한 적절한 메시지 변환기로)
 
+### Spring RabbitMQ
+* ConnetionFactory : RabbitMQ를 연결하고 관리하는 인터페이스
+* CachingConnectionFactory : Spring에서 제공하는 ConnectionFactory 객체
+* SingleConnectionFactory : Spring에서 제공하는 Test ConnectionFactory 객체
+
 
 <code>http://projects.spring.io/spring-amqp</code>
