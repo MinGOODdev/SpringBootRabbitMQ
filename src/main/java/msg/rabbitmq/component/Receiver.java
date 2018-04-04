@@ -6,13 +6,13 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Consumer {
+public class Receiver {
 
-    private static final Logger log = LoggerFactory.getLogger(Consumer.class);
+    private static final Logger log = LoggerFactory.getLogger(Receiver.class);
 
     @RabbitListener(queues = "${myqueue}")
     public void handler(String msg) {
-        log.info("Consumer > " + msg);
+        log.info("Recevier ---> " + msg);
     }
 
 }
