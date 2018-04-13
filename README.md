@@ -59,7 +59,7 @@ Multicast 방식에 적합하다.
 * Fanout Exchange<br/>
 ![Fanout_exchange_routing](http://img1.daumcdn.net/thumb/R1920x0/?fname=http%3A%2F%2Fcfile5.uf.tistory.com%2Fimage%2F2342EF3958749D741B3AEA)
 
-* Topic Exchange<<br/>
+* Topic Exchange<br/>
 ![Topic_exchange_routing](http://img1.daumcdn.net/thumb/R1920x0/?fname=http%3A%2F%2Fcfile26.uf.tistory.com%2Fimage%2F2123AA3C58749D462219DC)
 
 ***
