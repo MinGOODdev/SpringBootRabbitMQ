@@ -2,7 +2,7 @@ package msg.rabbitmq.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
@@ -50,6 +50,16 @@ public class RabbitMQConfig {
         container.setQueueNames(QUEUE_NAME);
         container.setMessageConverter(jsonMessageConverter());
         return container;
+    }
+
+    @Bean
+    public TopicExchange topicExchange(Exchange exchange) {
+        return topicExchange(exchange);
+    }
+
+    @Bean
+    public Binding binding(Queue queue, TopicExchange topicExchange) {
+        return BindingBuilder.bind(queue).to(topicExchange).with(QUEUE_NAME);
     }
 
     @Bean
