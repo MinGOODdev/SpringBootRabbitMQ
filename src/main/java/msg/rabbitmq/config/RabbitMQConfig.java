@@ -1,5 +1,6 @@
 package msg.rabbitmq.config;
 
+import msg.rabbitmq.component.Producer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.*;
@@ -10,6 +11,7 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -19,16 +21,16 @@ public class RabbitMQConfig {
 
     private static final Logger logger = LoggerFactory.getLogger(RabbitMQConfig.class);
 
-    @Value("${spring.rabbit.host}")
+    @Value("${spring.rabbitmq.host}")
     private String host;
 
-    @Value("${spring.rabbit.port")
+    @Value("${spring.rabbitmq.port}")
     private int port;
 
-    @Value("${spring.rabbit.username")
+    @Value("${spring.rabbitmq.username}")
     private String userName;
 
-    @Value("${spring.rabbit.password")
+    @Value("${spring.rabbitmq.password}")
     private String password;
 
     public static final String QUEUE_NAME = "queue";
@@ -53,8 +55,8 @@ public class RabbitMQConfig {
     }
 
     @Bean
-    public TopicExchange topicExchange(Exchange exchange) {
-        return topicExchange(exchange);
+    public TopicExchange topicExchange() {
+        return new TopicExchange(EXCHANGE);
     }
 
     @Bean
@@ -71,6 +73,7 @@ public class RabbitMQConfig {
     public ConnectionFactory connectionFactory() {
         CachingConnectionFactory factory = new CachingConnectionFactory();
         factory.setHost(host);
+        factory.setPort(port);
         factory.setUsername(userName);
         factory.setPassword(password);
         return factory;
