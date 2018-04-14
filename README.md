@@ -1,14 +1,11 @@
 # Spring Boot + RabbitMQ
-
 ## 동기? 비동기?
 ![sync & async](https://mblogthumb-phinf.pstatic.net/20150714_183/tmondev_1436844582787b82mW_PNG/2_2.png?type=w2)
-
-***
 
 ## AMQP
 프로그래밍에서 MQ는 프로세스 또는 프로그램 인스턴스가 데이터를 서로 교환할 때 사용하는 방법을 말한다.
 이러한 MQ의 오픈 소스에 기반한 표준 프로토콜이 AMQP(Advanced Message Queuing Protocol)이다.
-AMQP 자체가 프로토콜을 의미하기 때문에 이 프로토콜을 구현한 MQ 제품들은 여러가지가 있으며 그 중 하나가 RabbitMQ이다. 
+AMQP 자체가 프로토콜을 의미하기 때문에 이 프로토콜을 구현한 MQ 제품들은 여러가지가 있으며 그 중 하나가 RabbitMQ이다.
 
 ### AMQP의 구성요소와 라우팅 알고리즘
 ![AMQP_Algorithm](https://mblogthumb-phinf.pstatic.net/20150714_167/tmondev_1436844582589iKxDW_PNG/3.png?type=w2)
@@ -95,14 +92,82 @@ RabbitMQ는 AMQP를 구현하였기 때문에 아래의 표와 같이 Exchange T
 </tr>
 </table>
 
+## 시작하기
 ### Spring AMQP 라이브러리 준비하기
 RabbitMQ를 사용하기 위해서 다음 라이브러리를 pom.xml에 추가한다. 만약 프로젝트에 이미 Spring core 등 라이브러리가 추가되어 있다면
 버전에 따라 AMQP 버전을 다르게 가져가야 한다. AMQP 1.4.x.RELEASE는 Spring 4.x에 의존하고,
 AMQP 1.3.x.RELEASE는 Spring 3.x에 의존하기 때문이다.
-~~~
-<dependency>
-    <groupId>org.springframework.amqp</groupId>
-    <artifactId>spring-rabbit</artifactId>
-    <version>2.0.3.RELEASE</version>
-</dependency>
-~~~
+* pom.xml
+```
+<dependencies>
+    <dependency>
+        <groupId>org.springframework.amqp</groupId>
+        <artifactId>spring-rabbit</artifactId>
+        <version>2.0.3.RELEASE</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-jdbc</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.mybatis.spring.boot</groupId>
+        <artifactId>mybatis-spring-boot-starter</artifactId>
+        <version>1.3.2</version>
+    </dependency>
+
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <scope>runtime</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <optional>true</optional>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-tomcat</artifactId>
+        <scope>provided</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-test</artifactId>
+        <scope>test</scope>
+    </dependency>
+
+    <!--<dependency>-->
+        <!--<groupId>ch.qos.logback</groupId>-->
+        <!--<artifactId>logback-classic</artifactId>-->
+        <!--<version>1.2.3</version>-->
+    <!--</dependency>-->
+</dependencies>
+```
+
+## 사용된 도구
+
+* Spring Boot : 웹 프레임워크
+* Maven : 의존성 관리 프로그램
+* Tomcat : 웹 애플리케이션 서버
+
+## 기타 메모
+### title
+* anything
+
+## 저자
+
+* **조민국** - [MinGOODdev](https://github.com/MinGOODdev)
+
+
+## 감사 인사
+
+* [Redis 저장소에 CRUD 로직 구현하기](http://jsonobject.tistory.com/390?category=787905)
+
+---
+
+
