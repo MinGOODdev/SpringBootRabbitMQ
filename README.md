@@ -154,10 +154,7 @@ AMQP 1.3.x.RELEASE는 Spring 3.x에 의존하기 때문이다.
 * Spring Boot : 웹 프레임워크
 * Maven : 의존성 관리 프로그램
 * Tomcat : 웹 애플리케이션 서버
-
-## 기타 메모
-### title
-* anything
+* RabbitMQ management
 
 ## 저자
 
@@ -166,7 +163,7 @@ AMQP 1.3.x.RELEASE는 Spring 3.x에 의존하기 때문이다.
 
 ## 감사 인사
 
-* [Redis 저장소에 CRUD 로직 구현하기](http://jsonobject.tistory.com/390?category=787905)
+* [RabbitMQ와 Spring AMQP를 이용한 간단한 작업 큐 만들기](https://m.blog.naver.com/PostView.nhn?blogId=tmondev&logNo=220419853534&proxyReferer=https%3A%2F%2Fwww.google.co.kr%2F)
 
 ---
 
